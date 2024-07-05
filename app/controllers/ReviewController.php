@@ -18,13 +18,13 @@ class ReviewController
     {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $patiantid = $_POST["patiant-id"];
-            $doctorid = $_POST["doctor-id"];
+            $patiantid = $_POST["patiantid"];
+            $doctorid = $_POST["doctorid"];
             $rate = $_POST['rate'];
             $comment = $_POST['comment'];
             $data = [
-                "patiant-id" => $patiantid,
-                "doctor-id" => $doctorid,
+                "patiantid" => $patiantid,
+                "doctorid" => $doctorid,
                 'rate' => $rate,
                 'comment' => $comment,
             ];
@@ -44,7 +44,7 @@ class ReviewController
     {
         $rates = $this->model->getreviews($id);
         $rate = 0;
-        var_dump($rates);
+        // var_dump($rates);
         for($i=0;$i<count($rates);$i++){
             $rate+=$rates[$i]["rate"];
 

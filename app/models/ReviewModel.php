@@ -10,14 +10,13 @@ class ReviewModel
     public function addreview($data)
     {
         return $this->db->insert('reviews', $data);
-
     }
     public function getreviews($id)
     {
         // return $this->db->get('reviews');
         $cols = Array ("rate");
+        $this->db->where ('doctorid', $id);
         $rates = $this->db->get("reviews", null,$cols );
-        $this->db->where ("doctor-id", $id);
         if ($this->db->count > 0) {
             return $rates;
         }

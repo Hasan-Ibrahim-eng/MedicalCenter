@@ -5,7 +5,7 @@ namespace app\controllers;
 
  use app\models\SpecialtieModel;
 
- class SpeciatieController{
+ class SpecialtieController{
 
     private $specialtieModel;
     
