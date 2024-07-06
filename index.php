@@ -3,12 +3,13 @@
 //use app\controllers\UserController;
 
 use app\controllers\PatiantController;
-use app\controllers\SpeciatieController;
+use app\controllers\SpecialtieController;
+
 
 require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/vendor/DB/MysqliDb.php';
 require_once __DIR__ . '/app/controllers/PatiantController.php';
-require_once __DIR__ . '/app/controllers/SpeciatieController.php';
+require_once __DIR__ . '/app/controllers/SpecialtieController.php';
 
 
 $config = require 'config/config.php';
@@ -24,36 +25,44 @@ $request = $_SERVER['REQUEST_URI'];
 define('BASE_PATH', '/');
 
 $Patiantcontroller = new PatiantController($db);
-$SpecialtieContrller = new SpeciatieController($db);
+$SpecialtieContrller = new SpecialtieController($db);
 
-/* switch ($request) {
+ switch ($request) {
     case BASE_PATH:
-        $controller->index();
+        $Patiantcontroller->index();
+        $SpecialtieContrller->index();
         break;
-    case BASE_PATH . 'add':
-        $controller->addUser();
+    case BASE_PATH . 'add/patiant':
+        $Patiantcontroller->addPatiant();
         break;
-    case BASE_PATH . 'show':
-        $controller->showUsers();
+    case BASE_PATH . 'add/specialtie':
+        $SpecialtieContrller->addSpecialtie();
         break;
-    case BASE_PATH . 'delete?id=' . $_GET['id']:
-        // var_dump($_GET['id']);
-        $controller->deleteUser($_GET['id']);
+    case BASE_PATH . 'show/patiant':
+        $Patiantcontroller->showPatiant();
         break;
-    case BASE_PATH . 'update?id=' . $_GET['id']:
-        $controller->updateUser($_GET['id']);
+    case BASE_PATH . 'show/specialtie':
+        $SpecialtieContrller->showSpecialtie();
         break;
-    case BASE_PATH . 'edit?id=' . $_GET['id']:
-        // var_dump($_GET['id']);
-        $controller->editUser($_GET['id']);
+    case BASE_PATH . 'delete/patiant?id=' . $_GET['id']:
+        $Patiantcontroller->deletePatiant($_GET['id']);
         break;
-    case BASE_PATH . 'search':
-        $controller->searchUsers($_POST['search_term']);
+    case BASE_PATH . 'delete/specialtie?id=' . $_GET['id']:
+        $SpecialtieContrller->deleteSpeialtie($_GET['id']);
         break;
-    case BASE_PATH . 'show_search':
-        $controller->showSearchedUsers($_GET['search_term']);
+    case BASE_PATH . 'update/patiant?id=' . $_GET['id']:
+        $Patiantcontroller->updatePatiant($_GET['id']);
+        break;
+    case BASE_PATH . 'update/specialtie?id=' . $_GET['id']:
+        $SpecialtieContrller->updateSpeialtie($_GET['id']);
+        break;
+    case BASE_PATH . 'search/patiant':
+        $Patiantcontroller->searchPatiant($_POST['search_term']);
+        break;
+    case BASE_PATH . 'search/specialtie':
+        $SpecialtieContrller->searchSpecialtie($_POST['search_term']);
         break;
     default:
     // var_dump($request);
         break;
-} */
+} 
